@@ -19,3 +19,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/projects' ,[ProjectController::class,'index']);
+
+
+
+// Laravel va a prendersi la chiave primaria ovvero l'id - noi vogliamo invece lo slug - quindi dobbiamo dirgli che colonna utilizzare {project:slug}
+Route::get('/projects/{project:slug}' ,[ProjectController::class,'show']);
