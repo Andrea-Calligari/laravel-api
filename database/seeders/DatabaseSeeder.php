@@ -20,12 +20,12 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         //Possiamo utilizzare il DataBaseSeeder per lanciare in ordine che vogliamo Seeder e Migrations!!!!!
-        $this->call(([
+        $this->call([
             UserSeeder::class,
             TypeSeeder::class,
             TechnologySeeder::class,
             ProjectSeeder::class,
             
-        ]));
+        ]);
     }
 }

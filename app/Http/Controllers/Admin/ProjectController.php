@@ -20,6 +20,7 @@ class ProjectController extends Controller
     public function index()
     {
         $projects = Project::with(['type', 'type.projects'])->get();// 2 query
+       
 
 
 
@@ -83,11 +84,17 @@ class ProjectController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Project $project)
-    {
+    public function show(Project $project, $id)
+    {   $project_co_worker = Project::find($id);
+        if( $project_co_worker){
+           $project_co_worker->co_workers = json_decode( $project_co_worker->co_workers, true);
+            return response()->json($project_co_worker);
+        }
         $project->load(['type', 'type.projects']);
+       
+        
 
-        return view('admin.projects.show', compact('project'));
+        return view('admin.projects.show', compact('project', 'project_co_worker'));
     }
 
     /**

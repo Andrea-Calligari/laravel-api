@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->string('description')->nullable();
             $table->integer('working_hours');
-            $table->string('co_workers')->nullable();
+            $table->json('co_workers')->nullable();
             $table->timestamps();   
         });
     }
